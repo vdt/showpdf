@@ -1,0 +1,41 @@
+# showpdf
+
+convert a "show" file to PDF via some pre-processing, then markdown, then
+beamer.
+
+This is really a first cut push; I am woefully short of time and will do a
+better job as soon as I can get some quality time to spend with backslashes
+:-)
+
+### pre-requisites
+
+  * this source tree.  Contains:
+      * the main script "showpdf"
+      * Markdown.pl, a single file perl script to convert markdown to HTML
+      * mdbeamer.pl, to convert HTML to latex
+      * md2pdf.show, which is the raw input for the "demo" show
+      * md2pdf.pdf, which is the corresponding output (strictly speaking
+        should not be checked in, but you may want to see what it looks like
+        without installing and running it...)
+
+  * Markdown, from [here][md]
+      * but this is really just one perl program so I've included it here
+
+  * the "texlive-latex" package
+
+  * the "graphviz" package
+
+  * mdbeamer.pl (included in this source tree)
+
+  * perl, including the `HTML::Entities` module
+
+That should do it...
+
+[md]: http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip
+
+### downsides
+
+Latex is very very finicky.  Debugging this, if it bombs, is a royal PITA.
+Right now, while this all works fine on Mandriva, it aborts with a "Runaway
+argument?" error on Fedora 13 and I have neither the time nor the brains to
+fix it :(

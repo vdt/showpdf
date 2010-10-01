@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## showpdf      | make a pdf presentation (show); stdin->tmp, or file->file
+rm /tmp/showpdf.*
+cat "${1:--}" | Markdown.pl | mdbeamer.pl > /tmp/showpdf.tex
+cd /tmp
+pdflatex /tmp/showpdf.tex || return
+pdflatex /tmp/showpdf.tex || return
+cd -
+local out=/tmp/showpdf
+[[ -n "$1" ]] && out="${1%.*}" && cp /tmp/showpdf.pdf "$out.pdf"
+okular "$out.pdf"
